@@ -23,6 +23,7 @@
  */
 package com.example.androiddevchallenge.ui.screen.dogDetails
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
@@ -66,15 +67,17 @@ import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.data.repository.DefaultData
 import com.example.androiddevchallenge.model.Pet
 import com.example.androiddevchallenge.model.PetBreeds
+import com.example.androiddevchallenge.ui.navigation.Screen
 import com.example.androiddevchallenge.ui.screen.home.HomeViewModel
 import com.example.androiddevchallenge.ui.screen.home.PetImage
 import com.example.androiddevchallenge.ui.theme.colorDarkText
 import com.example.androiddevchallenge.ui.theme.colorTextBody
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun DogDetailScreen(
     viewModel: HomeViewModel,
-    navController: NavController
+    navController: NavController,
 ) {
     val selectedDog by viewModel.selectedDog.collectAsState()
     val scrollState = rememberScrollState()
@@ -83,6 +86,9 @@ fun DogDetailScreen(
 
 
         selectedDog?.let { dog ->
+
+
+            navController.navigate(Screen.form_screen.route)
             Column(
                 modifier = Modifier
                     .verticalScroll(enabled = true, state = scrollState)
@@ -144,7 +150,9 @@ fun AdoptButton(
     modifier: Modifier = Modifier,
     onClick: (message: String) -> Unit
 ) {
-    
+
+
+
 }
 
 @Composable
