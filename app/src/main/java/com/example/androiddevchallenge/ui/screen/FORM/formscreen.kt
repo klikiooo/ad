@@ -30,17 +30,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.androiddevchallenge.R
+import com.example.androiddevchallenge.ui.screen.home.HomeViewModel
 
 
 @Composable
-fun form(){
+fun formscreen(
+    viewModel: HomeViewModel,
+    navController: NavController
+
+){
     Column (modifier = Modifier
         .fillMaxSize()
         .paint(
@@ -74,12 +79,12 @@ fun form(){
 
             Image(
                 painter = painterResource(id = R.drawable.parchment), contentDescription = "reg",
-                modifier = Modifier.size(200.dp)
+                modifier = Modifier.size(80.dp)
             )
 
         }
 
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         Box (
 
@@ -96,7 +101,7 @@ fun form(){
                 fontWeight = FontWeight.Bold
             )
         }
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         TextField(value = firstname, onValueChange = {firstname = it},
             placeholder = { Text(text = " firstname",
@@ -165,7 +170,7 @@ fun form(){
 
 
             Button(onClick = { /*TODO*/ }) {
-                Text(text = "Register")
+                Text(text = "ADOPT")
             }
         }
         Spacer(modifier = Modifier.height(2.dp))
@@ -182,10 +187,4 @@ fun form(){
 
 
 
-
-@Preview(showBackground = true)
-@Composable
-fun formpreview() {
-    form()
-}
 
